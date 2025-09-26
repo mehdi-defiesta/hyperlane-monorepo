@@ -23,6 +23,7 @@ members = [
   "utils/crypto",
   "utils/hex",
   "utils/run-locally",
+  "utils/hyperlane-cli-tool",
 ]
 resolver = "2"
 

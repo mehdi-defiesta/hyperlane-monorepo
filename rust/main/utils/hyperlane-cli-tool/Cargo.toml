@@ -1,0 +1,29 @@
+[package]
+name = "hyperlane-cli-tool"
+documentation.workspace = true
+edition.workspace = true
+homepage.workspace = true
+license-file.workspace = true
+publish.workspace = true
+version.workspace = true
+
+[[bin]]
+name = "hyperlane-cli"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+tokio = { workspace = true, features = ["full"] }
+hex = { workspace = true }
+ethers = { workspace = true }
+ethers-core = { workspace = true }
+ethers-providers = { workspace = true }
+ethers-contract = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+
+# Hyperlane dependencies
+hyperlane-core = { path = "../../hyperlane-core" }

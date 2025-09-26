@@ -5625,6 +5625,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "hyperlane-cli-tool"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap 4.5.20",
+ "ethers",
+ "ethers-contract",
+ "ethers-core",
+ "ethers-providers",
+ "hex 0.4.3",
+ "hyperlane-core",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "hyperlane-core"
 version = "0.1.0"
 dependencies = [
