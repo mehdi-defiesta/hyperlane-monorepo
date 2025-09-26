@@ -35,7 +35,32 @@ pub async fn search_messages(
         println!("Origin Filter:        All origins");
     }
     
-    if let Some(destination) = destination_filter {
+    // Display destination filter - show actual destinations from MatchingList if available
+    if let Some(json) = &matching_list_json {
+        // Parse MatchingList early to show destination filters
+        match MatchingList::from_json(json) {
+            Ok(list) => {
+                let destinations: Vec<String> = list.rules.iter()
+                    .map(|rule| format!("{}", rule.destination_domain))
+                    .collect::<std::collections::HashSet<_>>()
+                    .into_iter()
+                    .collect();
+                
+                if destinations.len() == 1 && destinations[0] == "*" {
+                    println!("Destination Filter:   All destinations");
+                } else {
+                    println!("Destination Filter:   {}", destinations.join(", "));
+                }
+            }
+            Err(_) => {
+                if let Some(destination) = destination_filter {
+                    println!("Destination Filter:   {}", destination);
+                } else {
+                    println!("Destination Filter:   All destinations");
+                }
+            }
+        }
+    } else if let Some(destination) = destination_filter {
         println!("Destination Filter:   {}", destination);
     } else {
         println!("Destination Filter:   All destinations");
